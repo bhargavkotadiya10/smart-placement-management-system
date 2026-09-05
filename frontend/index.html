@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Placement Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <h1>Smart Placement Management System</h1>
+            <p>Student placement and application dashboard</p>
+        </div>
+        <a class="api-link" href="/docs" target="_blank">API Docs</a>
+    </header>
+
+    <main class="container">
+        <section class="stats" id="stats">
+            <div class="stat-card"><span>Students</span><strong id="studentsCount">0</strong></div>
+            <div class="stat-card"><span>Companies</span><strong id="companiesCount">0</strong></div>
+            <div class="stat-card"><span>Jobs</span><strong id="jobsCount">0</strong></div>
+            <div class="stat-card"><span>Applications</span><strong id="applicationsCount">0</strong></div>
+            <div class="stat-card"><span>Selected</span><strong id="selectedCount">0</strong></div>
+        </section>
+
+        <nav class="tabs">
+            <button class="tab active" data-section="jobsSection">Jobs</button>
+            <button class="tab" data-section="studentSection">Students</button>
+            <button class="tab" data-section="applicationsSection">Applications</button>
+            <button class="tab" data-section="interviewsSection">Interviews</button>
+            <button class="tab" data-section="companiesSection">Companies</button>
+        </nav>
+
+        <section id="jobsSection" class="section active-section">
+            <div class="section-header">
+                <div>
+                    <h2>Job Opportunities</h2>
+                    <p>Browse current openings and apply as a student.</p>
+                </div>
+                <div class="filters">
+                    <input id="jobSearch" type="search" placeholder="Search jobs, companies or skills">
+                    <input id="jobLocation" type="search" placeholder="Location">
+                    <button id="searchJobs">Search</button>
+                </div>
+            </div>
+            <div id="jobsList" class="grid"></div>
+        </section>
+
+        <section id="studentSection" class="section">
+            <div class="section-header">
+                <div>
+                    <h2>Students</h2>
+                    <p>Create a student profile before applying.</p>
+                </div>
+            </div>
+            <form id="studentForm" class="form-grid">
+                <input name="name" placeholder="Full name" required>
+                <input name="email" type="email" placeholder="Email" required>
+                <input name="phone" placeholder="Phone">
+                <input name="course" placeholder="Course (e.g. MCA)" required>
+                <input name="graduation_year" type="number" placeholder="Graduation year">
+                <input name="percentage" type="number" step="0.01" placeholder="Percentage">
+                <input name="github_url" type="url" placeholder="GitHub URL">
+                <input name="linkedin_url" type="url" placeholder="LinkedIn URL">
+                <button type="submit">Create Student</button>
+            </form>
+            <div id="studentsList" class="table-wrap"></div>
+        </section>
+
+        <section id="applicationsSection" class="section">
+            <div class="section-header">
+                <div>
+                    <h2>Applications</h2>
+                    <p>Track application status throughout the placement process.</p>
+                </div>
+            </div>
+            <div id="applicationsList" class="table-wrap"></div>
+        </section>
+
+        <section id="interviewsSection" class="section">
+            <div class="section-header">
+                <div>
+                    <h2>Interviews</h2>
+                    <p>Schedule interview rounds for submitted applications.</p>
+                </div>
+            </div>
+            <form id="interviewForm" class="form-grid">
+                <input name="application_id" type="number" placeholder="Application ID" required>
+                <input name="round_name" placeholder="Round name (e.g. Technical Interview)" required>
+                <input name="scheduled_at" type="datetime-local" required>
+                <select name="mode" required>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+                <input name="notes" placeholder="Notes">
+                <button type="submit">Schedule Interview</button>
+            </form>
+            <div id="interviewsList" class="table-wrap"></div>
+        </section>
+
+        <section id="companiesSection" class="section">
+            <div class="section-header">
+                <div>
+                    <h2>Companies</h2>
+                    <p>Manage companies that publish placement opportunities.</p>
+                </div>
+            </div>
+            <form id="companyForm" class="form-grid">
+                <input name="name" placeholder="Company name" required>
+                <input name="location" placeholder="Location" required>
+                <input name="website" type="url" placeholder="Website">
+                <input name="description" placeholder="Description">
+                <button type="submit">Add Company</button>
+            </form>
+            <div id="companiesList" class="table-wrap"></div>
+        </section>
+
+        <div id="toast" class="toast"></div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
