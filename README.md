@@ -1,6 +1,6 @@
 # Smart Placement Management System
 
-A portfolio-ready placement management web application built with Python, FastAPI, MySQL, HTML, CSS and JavaScript.
+A web-based placement management application built to manage students, companies, job opportunities, applications, and interviews.
 
 ## Features
 
